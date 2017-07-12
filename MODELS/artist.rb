@@ -1,4 +1,4 @@
-require_relative( '../DB/sql_runner.rb' )
+require_relative('../DB/sql_runner.rb' )
 
 class Artist
 
@@ -38,6 +38,15 @@ class Artist
       return false
     end
     # Should we also delete associated object?
+  end
+
+  def self.find(id)
+    
+    sql = "SELECT * FROM artists WHERE id = #{id}"
+    result = SqlRunner.run(sql)
+    artist_hash = results.first
+    artist = Artist.new(artist_hash)
+    return artist
   end
 
   def self.list

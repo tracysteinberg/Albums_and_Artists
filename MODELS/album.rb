@@ -38,10 +38,22 @@ class Album
     # Should we also delete associated object?
   end
 
+  def self.find(id)
+    
+    sql = "SELECT * FROM albums WHERE id = #{id}"
+    result = SqlRunner.run(sql)
+    music_hash = results.first
+    music = Album.new(music_hash)
+    return music
+  end
+
+
   def self.list
     sql = "SELECT * FROM albums;"
     result = SqlRunner.run( sql )
     return result.map { |album| Album.new( album ) }
   end
+
+
 
 end
