@@ -21,6 +21,12 @@ class Artist
     return result.map { |album| Album.new( album ) }
   end
 
+  def update( new_options )
+    @name = new_options['name']
+    sql = "UPDATE artists SET name = '#{@name}' WHERE id = #{@id};"
+    SqlRunner.run( sql )
+  end
+
   def self.list
     sql = "SELECT * FROM artists;"
     result = SqlRunner.run( sql )

@@ -22,5 +22,10 @@ all_albums = Album.list()
 vega_albums = suzanne_vega.albums()
 fitd_artist = flowers_in_the_dirt.artist()
 
+suzanne_vega.update( { 'name' => 'Suzanne Vogon' } )
+solitude_standing.update( { 'genre' => 'Folk Rock' } )
+all_artists = Artist.list()
+all_albums = Album.list()
+
 binding.pry
 null

@@ -23,6 +23,15 @@ class Album
     return Artist.new( result[0] )
   end
 
+  def update( new_options )
+    #Update only those fields we are given in the method call
+    @title = new_options['title'] if new_options['title']
+    @genre = new_options['genre'] if new_options['genre']
+    @artist_id = new_options['artist_id'].to_i if new_options['artist_id']
+    sql = "UPDATE albums SET ( title, genre, artist_id ) = ( '#{@title}', '#{@genre}', #{@artist_id} ) WHERE id = #{@id};"
+    SqlRunner.run( sql )
+  end
+
   def self.list
     sql = "SELECT * FROM albums;"
     result = SqlRunner.run( sql )
