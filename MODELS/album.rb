@@ -32,6 +32,12 @@ class Album
     SqlRunner.run( sql )
   end
 
+  def delete()
+    sql = "DELETE FROM albums WHERE id = #{@id};"
+    SqlRunner.run( sql )
+    # Should we also delete associated object?
+  end
+
   def self.list
     sql = "SELECT * FROM albums;"
     result = SqlRunner.run( sql )

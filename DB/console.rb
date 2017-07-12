@@ -27,5 +27,16 @@ solitude_standing.update( { 'genre' => 'Folk Rock' } )
 all_artists = Artist.list()
 all_albums = Album.list()
 
+william_shatner = Artist.new( { 'name' => 'William Shatner' } )
+william_shatner.save()
+deleted_ws = william_shatner.delete?()
+deleted_sv = suzanne_vega.delete?()
+
+solitude_standing.delete()
+
+# Should the delete methods above delete the object as well as the entry in the database?
+
+
+
 binding.pry
-null
+nil
